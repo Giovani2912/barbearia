@@ -51,7 +51,11 @@ const BarbershopPage = async ({ params }: BarberShopPageProps) => {
 
         <Sheet>
           <SheetTrigger asChild>
-            <Button size="icon" variant="outline" className="absolute top-4 right-4">
+            <Button
+              size="icon"
+              variant="outline"
+              className="absolute right-4 top-4"
+            >
               <MenuIcon />
             </Button>
           </SheetTrigger>
@@ -83,7 +87,11 @@ const BarbershopPage = async ({ params }: BarberShopPageProps) => {
         <h2 className="text-xs font-bold uppercase text-gray-400">Serviços</h2>
         <div className="space-y-3">
           {barbershop.services.map((service) => (
-            <ServiceItem key={service.id} service={service} />
+            <ServiceItem
+              key={service.id}
+              service={service}
+              barbershop={barbershop}
+            />
           ))}
         </div>
       </div>

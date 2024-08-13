@@ -28,6 +28,7 @@ import {
   DialogTrigger,
 } from "./ui/dialog"
 import { signIn, signOut, useSession } from "next-auth/react"
+import SignInDialog from "./sign-in-dialog"
 
 const Sidebar = () => {
   const { data } = useSession()
@@ -60,20 +61,7 @@ const Sidebar = () => {
                 </Button>
               </DialogTrigger>
               <DialogContent className="w-[90%]">
-                <DialogHeader>
-                  <DialogTitle>Faça login na plataforma</DialogTitle>
-                  <DialogDescription>
-                    Conecte-se usando sua conta do Google.
-                  </DialogDescription>
-                </DialogHeader>
-                <Button
-                  variant="outline"
-                  className="gap-1 font-bold"
-                  onClick={handleLoginWithGoogleClick}
-                >
-                  <MailIcon />
-                  Google
-                </Button>
+                <SignInDialog />
               </DialogContent>
             </Dialog>
           </>
@@ -86,9 +74,11 @@ const Sidebar = () => {
             Início
           </Link>
         </Button>
-        <Button className="justify-start gap-2" variant="ghost">
-          <Calendar size={18} />
-          Agendamentos
+        <Button className="justify-start gap-2" variant="ghost" asChild>
+          <Link href="/bookings">
+            <Calendar size={18} />
+            Agendamentos
+          </Link>
         </Button>
       </div>
 
